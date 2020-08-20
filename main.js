@@ -1,11 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const token = require('./token.json')
 
 client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.login('NzQ2MTQ1Nzg4NjUyMTU5MDQ4.Xz8Eag.LQDpRzxEjhsqZ72Gk7ER85lA60w')
+client.login(token.token)
 //Aisha roast
 client.on('message', message => {
     let aishaRole = message.member.roles.cache.some(r => r.name === "Not Among Us")
