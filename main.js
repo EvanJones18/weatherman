@@ -34,7 +34,7 @@ client.on('message', message => {
     }
 
     if (aishaRole) {
-        let i = randomInt(0, 0)
+        let i = randomInt(0, 6)
         if (i === 0) {
             joke = jokeList[randomInt(0, jokeList.length)]
             
