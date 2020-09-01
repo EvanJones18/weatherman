@@ -1,0 +1,1 @@
+forever --spinSleepTime 10000 start weatherman/main.js &
