@@ -40,7 +40,7 @@ client.on('message', message => {
             
             //Echo
             if (args[1] === "echo") {
-                let channel = client.channels.cache.find(ch => ch.name === args[2])
+                let channel = message.guild.channels.cache.find(ch => ch.name === args[2])
                 for (let i = 0; i < args[3]; i ++) {
                     channel.send(args[4].slice(1, -1))
                 }
