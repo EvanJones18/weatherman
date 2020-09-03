@@ -31,14 +31,14 @@ client.on('message', message => {
     }
 })
 
-//Weatherman Control Commands
+//Restricted Commands (admin only)
 client.on('message', message => {
     let adminRole = message.member.roles.cache.some(r => r.name === "Ketchup Dispenser")
     if (adminRole) {
         if (message.content.startsWith("weatherman") || message.content.startsWith("wm")) {
             let args = message.content.match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g)
             
-            //Echo
+            //!FUNCTION: Echo
             if (args[1] === "echo") {
                 let channel = message.guild.channels.cache.find(ch => ch.name === args[2])
                 for (let i = 0; i < args[3]; i ++) {
@@ -48,3 +48,29 @@ client.on('message', message => {
         }
     }
 })
+    
+
+//Unrestricted Commands (everyone can use)
+client.on('message', message => {
+    if (message.content.startsWith("weatherman") || message.content.startsWith("wm")) {
+        let args = message.content.match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g)
+        
+        //!FUNCTION: Poll
+        if (args[1] === "poll") {
+            let title = args[2].slice(1, -1)
+            let items = new Array()
+            for (let i = 3; i < args.length; i ++) {
+                items.push(args[i].slice(1, -1)) 
+            }
+            message.channel.send(title)
+
+        }
+    }
+})
+
+
+
+
+
+
+
