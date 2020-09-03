@@ -7,7 +7,12 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
-client.login(token.token)
+client.login(token.token).then(function() {
+    console.log("Authenticated")
+})
+.catch(function(error) {
+    console.log(error)
+})
 //Aisha jokes
 client.on('message', message => {
     let aishaRole = message.member.roles.cache.some(r => r.name === "Not Among Us")
@@ -55,6 +60,13 @@ client.on('message', message => {
     if (message.content.startsWith("weatherman") || message.content.startsWith("wm")) {
         let args = message.content.match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g)
         
+        if (args[1] === "status") {
+            message.channel.send(
+                new Discord.MessageEmbed()
+                .setTitle("Weatherman is online")
+            )
+        }
+
         //!FUNCTION: Poll
         if (args[1] === "poll") {
             let title = args[2].slice(1, -1)
@@ -65,7 +77,7 @@ client.on('message', message => {
             let titleEmbed = new Discord.MessageEmbed()
                 .setAuthor("Poll")
                 .setTitle(title)
-                .setDescription("Vote for one of the options below. React with ✅ close the poll and send results.")
+                .setDescription("Vote for one of the options below. React with `✅` close the poll and send results.")
             
             message.channel.send(titleEmbed)
                 .then(sent => {
@@ -74,15 +86,15 @@ client.on('message', message => {
                 .catch(err => console.log(err))
 
             items.forEach(item => {
-                let itemEmbed = new Discord.MessageEmbed()
-                    .setTitle(item)
-                    
-                
-                message.channel.send(itemEmbed)
-                .then(sent => {
-                    sent.react("✅")
-                })
-                .catch(err => console.log(err))
+                //let itemEmbed = new Discord.MessageEmbed()
+                //    .setTitle(item)
+                //
+                //message.channel.send(itemEmbed)
+                //.then(sent => {
+                //    sent.react("✅")
+                //})
+                //.catch(err => console.log(err))
+                console.log(item)
             })
 
         }
