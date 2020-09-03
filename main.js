@@ -62,7 +62,28 @@ client.on('message', message => {
             for (let i = 3; i < args.length; i ++) {
                 items.push(args[i].slice(1, -1)) 
             }
-            message.channel.send(title)
+            let titleEmbed = new Discord.MessageEmbed()
+                .setAuthor("Poll")
+                .setTitle(title)
+                .setDescription("Vote for one of the options below. React with ✅ close the poll and send results.")
+            
+            message.channel.send(titleEmbed)
+                .then(sent => {
+                    sent.react("✅")
+                })
+                .catch(err => console.log(err))
+
+            items.forEach(item => {
+                let itemEmbed = new Discord.MessageEmbed()
+                    .setTitle(item)
+                    
+                
+                message.channel.send(itemEmbed)
+                .then(sent => {
+                    sent.react("✅")
+                })
+                .catch(err => console.log(err))
+            })
 
         }
     }
