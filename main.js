@@ -186,7 +186,10 @@ class Poll {
             .setDescription(`Results of \"${this.title}\"`)
             .addFields(
                 function() {
-                    for (let i = 0; int i )
+                    for (let i = 0; i < this.items.length; i ++) {
+                        let item = this.items[i]
+                        let 
+                    }
                 }
             )
     }
