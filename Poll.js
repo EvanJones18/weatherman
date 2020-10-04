@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 class Poll {
     constructor(message) {
         this.message = message
