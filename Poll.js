@@ -93,7 +93,8 @@ class Poll {
                 ":brown_square:",
                 ":purple_square:",
                 ":green_square:",
-                ":yellow_square:"
+                ":yellow_square:",
+                ":flushed:"
             ]
             
             function percentageBar() {
